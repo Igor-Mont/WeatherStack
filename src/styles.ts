@@ -131,8 +131,9 @@ export const MainGrid = styled.main`
 
         .min-max {
           display: flex;
+          justify-content: center;
           gap: 32px;
-
+          width: 400px;
           p {
             font-weight: 400;
             font-size: 32px;
@@ -144,9 +145,9 @@ export const MainGrid = styled.main`
       .weather {
         h2 {
           font-weight: 400;
+          text-align: center;
           font-size: 32px;
           font-family: 'Inter', sans-serif;
-          margin-bottom: 90px;
         }
       }
     }
