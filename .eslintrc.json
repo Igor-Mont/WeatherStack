@@ -30,6 +30,8 @@
   ],
   "rules": {
     "prettier/prettier": "error",
+    "camelcase": "off",
+    "@typescript-eslint/camelcase":"off",
     "no-use-before-define": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
