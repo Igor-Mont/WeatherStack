@@ -35,9 +35,8 @@ function App(): JSX.Element {
     })();
   }, []);
 
-  const thermalSensation = dataCity
-    ? kelvinForCelsius(dataCity.main.feels_like)
-    : 0;
+  const thermalSensation =
+    dataCity !== undefined ? kelvinForCelsius(dataCity.main.feels_like) : 0;
   const temp = dataCity ? kelvinForCelsius(dataCity.main.temp) : 0;
   const tempMin = dataCity ? kelvinForCelsius(dataCity.main.temp_min) : 0;
   const tempMax = dataCity ? kelvinForCelsius(dataCity.main.temp_max) : 0;
