@@ -23,6 +23,8 @@ type DataCityProps = {
 
 function App(): JSX.Element {
   const [dataCity, setDataCity] = useState<DataCityProps>();
+  const [inputSearchCity, setInputSearchCity] = useState('');
+
   useEffect(() => {
     (async function getData() {
       const response = await fetch(
@@ -36,9 +38,17 @@ function App(): JSX.Element {
   const thermalSensation = dataCity
     ? kelvinForCelsius(dataCity.main.feels_like)
     : 0;
-
+  const temp = dataCity ? kelvinForCelsius(dataCity.main.temp) : 0;
   const tempMin = dataCity ? kelvinForCelsius(dataCity.main.temp_min) : 0;
   const tempMax = dataCity ? kelvinForCelsius(dataCity.main.temp_max) : 0;
+
+  const handleSearchCity = async () => {
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${inputSearchCity}&appid=${process.env.REACT_APP_TOKEN}`,
+    );
+    const data = await response.json();
+    setDataCity(data);
+  };
 
   return (
     <MainGrid>
@@ -51,8 +61,15 @@ function App(): JSX.Element {
               type="text"
               id="inputSearch"
               placeholder="Pesquise sua cidade"
+              value={inputSearchCity}
+              onChange={e => setInputSearchCity(e.target.value)}
+              onKeyDown={e => e.keyCode === 13 && handleSearchCity()}
+              tabIndex={0}
             />
           </label>
+          <button type="submit" onClick={handleSearchCity}>
+            Buscar
+          </button>
         </div>
         <div className="content">
           <div className="left-content">
@@ -67,7 +84,7 @@ function App(): JSX.Element {
           </div>
           <div className="right-content">
             <div className="infos">
-              <h2>27 ºC</h2>
+              <h2>{Math.round(temp)} ºC</h2>
               <p>Sensação térmica: {Math.floor(thermalSensation)} ºC</p>
               <div className="min-max">
                 <p>Min: {Math.floor(tempMin)} ºC</p>

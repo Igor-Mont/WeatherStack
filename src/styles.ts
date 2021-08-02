@@ -37,7 +37,8 @@ export const MainGrid = styled.main`
         align-items: center;
         background-color: #fff;
         padding: 2px;
-        border-radius: 8px;
+        border-radius: 8px 0 0 8px;
+
         img {
           width: 24px;
           height: 24px;
@@ -61,6 +62,19 @@ export const MainGrid = styled.main`
           }
         }
       }
+
+      button {
+        font-family: 'Rajdhani', sans-serif;
+        font-weight: 600;
+        font-size: 18px;
+        padding: 2px 8px;
+        color: #fff;
+        border-radius: 0 8px 8px 0;
+        outline: 0;
+        border: 1px solid rgba(13, 111, 210, 0.7);
+        height: 28px;
+        background-color: rgba(13, 111, 210, 0.3);
+      }
     }
 
     .content {
@@ -80,7 +94,7 @@ export const MainGrid = styled.main`
       h1 {
         font-family: 'Rajdhani', sans-serif;
         font-weight: 600;
-        font-size: 72px;
+        font-size: 50px;
       }
 
       .img-weather {
@@ -136,7 +150,7 @@ export const MainGrid = styled.main`
           width: 400px;
           p {
             font-weight: 400;
-            font-size: 32px;
+            font-size: 28px;
             font-family: 'Inter', sans-serif;
           }
         }
@@ -148,6 +162,7 @@ export const MainGrid = styled.main`
           text-align: center;
           font-size: 32px;
           font-family: 'Inter', sans-serif;
+          margin: 70px 0 0 0;
         }
       }
     }
@@ -164,6 +179,15 @@ export const MainGrid = styled.main`
       border-radius: none;
       padding: 12px 32px 32px 32px;
       grid-area: mobile;
+
+      .search {
+        label {
+          input {
+            width: 200px;
+          }
+        }
+      }
+
       .content {
         flex-direction: column;
 
